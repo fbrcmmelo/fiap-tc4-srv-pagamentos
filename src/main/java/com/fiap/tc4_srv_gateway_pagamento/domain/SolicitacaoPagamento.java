@@ -4,6 +4,7 @@ import com.fiap.tc4_srv_gateway_pagamento.gateway.jpa.PagamentoEntity;
 import lombok.Getter;
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Optional;
 
 @Getter
@@ -43,6 +44,13 @@ public class SolicitacaoPagamento {
         if (status == null) {
             throw new IllegalArgumentException("Status não pode ser nulo");
         }
+
+        if (Arrays.asList(StatusPagamento.FECHADO_SEM_CREDITO,
+                StatusPagamento.FECHADO_COM_SUCESSO,
+                StatusPagamento.FECHADO_SEM_ESTOQUE).contains(this.status)) {
+            throw new IllegalArgumentException("Status não pode ser alterarado");
+        }
+
         this.status = status;
         this.atualizadoEm = Instant.now();
     }

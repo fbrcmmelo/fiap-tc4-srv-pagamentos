@@ -6,7 +6,7 @@ spring:
       host: mongo-container
       database: pagamento
       username: ${MONGODB_USERNAME:root}
-      password: ${MONGODB_PASSWORD:rootpass}
+      password: ${MONGODB_PASS:rootpass}
       authentication-database: admin
-  server:
-    port: 8084
+server:
+  port: 8084
