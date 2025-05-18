@@ -3,10 +3,10 @@ spring:
     name: tc4-srv-gateway-pagamento
   data:
     mongodb:
-      host: mongo-container
+      host: mongodb-pagamento
       database: pagamento
       username: ${MONGODB_USERNAME:root}
       password: ${MONGODB_PASS:rootpass}
       authentication-database: admin
 server:
-  port: 8084
+  port: 8083

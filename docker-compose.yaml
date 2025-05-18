@@ -1,41 +1,40 @@
 services:
-  pagamentos:
-    container_name: pagamentos
-    image: pagamentos
+  srv-pagamento:
+    container_name: srv-pagamento
     build:
       context: .
       dockerfile: Dockerfile
     links:
-      - mongo
+      - mongodb-pagamento
     depends_on:
-      - mongo
+      - mongodb-pagamento
     networks:
-      - pagamentos-network
+      - srv-pagamento-network
     volumes:
-      - pagamentos-data:/data/pagamentos
+      - srv-pagamento-data:/data/pagamentos
     environment:
       - MONGODB_USERNAME=root
       - MONGODB_PASS=rootpass
     ports:
-      - 8084:8084
+      - 8083:8083
     restart: always
 
-  mongo:
-    image: mongo:latest  # Imagem oficial do MongoDB
-    container_name: mongo-container
+  mongodb-pagamento:
+    image: mongo:latest
+    container_name: mongodb-pagamento
     ports:
-      - "27019:27017"  # Mapeia a porta 27019 do host para a porta 27017 do container
+      - "27021:27017"
     volumes:
-      - mongo-data:/data/db  # Volume para persistir os dados do banco de dados
+      - mongodb-pagamento-data:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root  # Defina o nome de usuário root
-      - MONGO_INITDB_ROOT_PASSWORD=rootpass  # Defina a senha para o usuário root
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
     networks:
-      - pagamentos-network
+      - srv-pagamento-network
 
 networks:
-  pagamentos-network:
+  srv-pagamentos-network:
 
 volumes:
-  mongo-data:
-  pagamentos-data:
+  mongodb-pagamento-data:
+  srv-pagamento-data:
