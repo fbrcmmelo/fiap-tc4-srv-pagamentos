@@ -1,9 +1,9 @@
-package com.fiap.tc4_srv_gateway_pagamento.gateway.jpa;
+package com.fiap.tc4_srv_gateway_pagamento.gateway;
 
 import com.fiap.tc4_srv_gateway_pagamento.domain.SolicitacaoPagamento;
 import com.fiap.tc4_srv_gateway_pagamento.domain.StatusPagamento;
-import com.fiap.tc4_srv_gateway_pagamento.gateway.PagamentoGatewayImpl;
-import org.junit.jupiter.api.AutoClose;
+import com.fiap.tc4_srv_gateway_pagamento.gateway.jpa.PagamentoEntity;
+import com.fiap.tc4_srv_gateway_pagamento.gateway.jpa.PagamentoMongoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

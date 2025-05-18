@@ -3,6 +3,7 @@ COPY pom.xml /build/pom.xml
 COPY src /build/src
 WORKDIR /build
 RUN mvn clean package
+RUN mvn test jacoco:report
 
 FROM openjdk:21
 COPY --from=builder build/target/*.jar /app/my-app.jar

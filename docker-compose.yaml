@@ -33,7 +33,7 @@ services:
       - srv-pagamento-network
 
 networks:
-  srv-pagamentos-network:
+  srv-pagamento-network:
 
 volumes:
   mongodb-pagamento-data:

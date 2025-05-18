@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/pagamento", produces = "application/json", consumes = "application/json")
+@RequestMapping(value = "/pagamento")
 public class PagamentoController {
 
     private final ISolicitarPagamentoUseCase solicitarPagamentoUseCase;
