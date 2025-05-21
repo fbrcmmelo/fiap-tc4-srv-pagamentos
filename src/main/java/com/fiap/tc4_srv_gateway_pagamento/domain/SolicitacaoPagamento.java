@@ -56,6 +56,7 @@ public class SolicitacaoPagamento {
     }
 
     public SolicitacaoPagamentoOut toSolicitacaoPagamentoOut() {
-        return new SolicitacaoPagamentoOut(this.solicitacaoId, this.status);
+        return new SolicitacaoPagamentoOut(this.solicitacaoId,
+                this.status, this.valor, this.numeroCartao, this.criadoEm, this.atualizadoEm);
     }
 }
