@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class BuscarSolicitacaoUseCaseTest {
@@ -28,5 +29,25 @@ class BuscarSolicitacaoUseCaseTest {
 
         assertThat(result).isNotNull();
         verify(pagamentoGateway).buscarSolicitao("id1");
+    }
+
+    @Test
+    void shouldThrowExceptionWhenSolicitacaoIdIsNull() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                useCase.buscarSolicitacaoPor(null)
+        );
+
+        assertThat(exception.getMessage()).isEqualTo("ID da solicitação não pode ser nulo ou vazio");
+        verifyNoInteractions(pagamentoGateway);
+    }
+
+    @Test
+    void shouldThrowExceptionWhenSolicitacaoIdIsEmpty() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                useCase.buscarSolicitacaoPor("")
+        );
+
+        assertThat(exception.getMessage()).isEqualTo("ID da solicitação não pode ser nulo ou vazio");
+        verifyNoInteractions(pagamentoGateway);
     }
 }

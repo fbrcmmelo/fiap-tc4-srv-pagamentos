@@ -46,8 +46,7 @@ public class SolicitacaoPagamento {
         }
 
         if (Arrays.asList(StatusPagamento.FECHADO_SEM_CREDITO,
-                StatusPagamento.FECHADO_COM_SUCESSO,
-                StatusPagamento.FECHADO_SEM_ESTOQUE).contains(this.status)) {
+                StatusPagamento.FECHADO_COM_SUCESSO).contains(this.status)) {
             throw new IllegalArgumentException("Status não pode ser alterarado");
         }
 
