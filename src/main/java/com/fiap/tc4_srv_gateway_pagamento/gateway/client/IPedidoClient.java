@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Component
-@FeignClient(name = "pedido", url = "http://localhost:8081")
+@FeignClient(name = "pedido", url = "srv-pedido-consumer:8081")
 public interface IPedidoClient {
 
-    @PostMapping("consumer-solicitacao-atualizada")
+    @PostMapping("consumer/solicitacao-atualizada")
     void notificarAtualizacaoPagamento(@RequestBody SolicitacaoPagamentoOut solicitacaoPagamentoOut);
 }

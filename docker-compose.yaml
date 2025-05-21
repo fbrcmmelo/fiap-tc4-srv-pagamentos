@@ -16,7 +16,7 @@ services:
       - MONGODB_USERNAME=root
       - MONGODB_PASS=rootpass
     ports:
-      - 8083:8083
+      - "8083:8083"
     restart: always
 
   mongodb-pagamento:
